@@ -1,0 +1,49 @@
+services:
+  besu:
+    container_name: besu
+    image: hyperledger/besu:latest
+    pull_policy: always
+    command:
+      - --logging=ALL
+      - --bootnodes=enode://663ce222c6ca01f14303c290966a21d387cc1fa77e3eec3c6b6c394740f4c56429fd5645b0fb25c75dc4260b0bca3167943566a261b05adcbdaf82012daa56d1@49.13.137.162:30303 
+      - --host-allowlist=*
+      - --rpc-http-enabled
+      - --rpc-http-api=ETH,NET,WEB3,TXPOOL,TRACE,DEBUG
+      - --rpc-http-cors-origins=all
+      - --engine-rpc-enabled
+      - --engine-jwt-disabled
+      - --engine-host-allowlist=*
+      - --rpc-ws-enabled
+      - --genesis-file=/etc/besu/genesis.json
+      - --data-path=/var/lib/besu
+    volumes:
+      - ./besu/data:/var/lib/besu
+      - ./besu/logs:/opt/besu/logs
+      - ./genesis.json:/etc/besu/genesis.json:ro
+      - ./log4j.xml:/etc/besu/log4j2.xml:ro
+    ports:
+      - "8545:8545"
+      - "30303:30303/tcp"
+      - "30303:30303/udp"
+    environment:
+      - LOG4J_CONFIGURATION_FILE=/etc/besu/log4j2.xml
+    healthcheck:
+      test: ["CMD-SHELL", "echo", "GET / HTTP/1.0\r\n", ">", "/dev/tcp/127.0.0.1/8545"]
+      interval: 10s
+      timeout: 1s
+      retries: 5
+
+  waves-node:
+    container_name: waves-node
+    image: wavesplatform/wavesnode:L2-20240507-819059ce4c
+    ports:
+      - "6868:6868"
+      - "6869:6869"
+    environment:
+      - JAVA_OPTS=-Dwaves.config.directory=/etc/waves -Dlogback.file.level=TRACE
+    volumes:
+      - ./waves:/var/lib/waves
+      - ./waves.conf:/etc/waves/waves.conf:ro
+    depends_on:
+      besu:
+        condition: service_healthy

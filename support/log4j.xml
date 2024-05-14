@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO" monitorInterval="5">
+    <Properties>
+        <Property name="root.log.pattern">%date %-5level [%-25.25thread] %35.35c{1.} - %msg%n%throwable</Property>
+    </Properties>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout alwaysWriteExceptions="false" pattern='${root.log.pattern}'/>
+        </Console>
+        <RollingFile name="RollingFile" fileName="/opt/besu/logs/besu.log" filePattern="/opt/besu/logs/besu-%d{yyyy-MM-dd}-%i.log.gz" >
+            <PatternLayout alwaysWriteExceptions="false" pattern='${root.log.pattern}'/>
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="1000 MB" />
+            </Policies>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Logger name="oshi" level="OFF" additivity="false"/>
+        <Logger name="io.netty" additivity="false">
+            <AppenderRef ref="RollingFile" level="TRACE" />
+        </Logger>
+        <Logger name="io.vertx" additivity="false">
+            <AppenderRef ref="RollingFile" level="TRACE" />
+        </Logger>
+        <Logger name="org.hyperledger.besu.ethereum.eth.transactions.BlobCache" additivity="false">
+            <AppenderRef ref="RollingFile" level="WARN" />
+        </Logger>
+        <Root>
+            <AppenderRef ref="Console" level="INFO" />
+            <AppenderRef ref="RollingFile" level="TRACE" />
+        </Root>
+    </Loggers>
+</Configuration>
