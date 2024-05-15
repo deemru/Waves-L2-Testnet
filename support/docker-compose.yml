@@ -32,6 +32,7 @@ services:
       interval: 10s
       timeout: 1s
       retries: 5
+    restart: always
 
   waves-node:
     container_name: waves-node
@@ -47,3 +48,4 @@ services:
     depends_on:
       besu:
         condition: service_healthy
+    restart: always
