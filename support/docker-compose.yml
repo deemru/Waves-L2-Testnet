@@ -44,6 +44,7 @@ services:
       - JAVA_OPTS=-Dwaves.config.directory=/etc/waves -Dlogback.file.level=TRACE
     volumes:
       - ./waves:/var/lib/waves
+      - ./waves:/var/log/waves
       - ./waves.conf:/etc/waves/waves.conf:ro
     depends_on:
       besu:
