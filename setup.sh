@@ -11,13 +11,14 @@ mkdir -p $WORK_DIR
 cd $WORK_DIR
 
 mkdir -p ./waves/data
-mkdir -p ./besu/data
-mkdir -p ./besu/logs
+mkdir -p ./besu
+mkdir -p ./log/besu
+mkdir -p ./log/waves
 
-[ -f ./docker-compose.yml ] || cp ../support/docker-compose.yml ./docker-compose.yml;
-[ -f ./genesis.json ] || cp ../support/genesis.json ./genesis.json;
-[ -f ./log4j.xml ] || cp ../support/log4j.xml ./log4j.xml;
-[ -f ./waves.conf ] || cp ../support/waves.conf ./waves.conf;
+cp ../support/docker-compose.yml ./docker-compose.yml;
+cp ../support/genesis.json ./genesis.json;
+cp ../support/log4j.xml ./log4j.xml;
+cp ../support/waves.conf ./waves.conf;
 
 sed -i "s/\(waves.wallet.password = \).*/\1\"$WAVES_DEPLOYER_PASSWORD\"/g" ./waves.conf
 sed -i "s/\(waves.wallet.seed = \).*/\1\"$WAVES_DEPLOYER_SEED\"/g" ./waves.conf
