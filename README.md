@@ -42,6 +42,16 @@ nano config.sh
 ./setup.sh
 ```
 
+This setup opens while running public ports:
+- 30303 tcp + udp (besu [P2P](https://besu.hyperledger.org/public-networks/how-to/connect/configure-ports#p2p-networking))
+- 6865 tcp (waves-node L2 P2P)
+- 6868 tcp (waves-node P2P)
+- 6869 tcp (waves-node REST API)
+
+And localhost (127.0.0.1) accessible ports:
+- 8545 tcp (besu [JSON RPC API](https://besu.hyperledger.org/public-networks/how-to/connect/configure-ports#json-rpc-api))
+- 8551 tcp (besu Engine API)
+
 ### Run
 
 ```
@@ -58,3 +68,4 @@ You can view docker logs from detached containers as:
 ```
 docker ps -q | xargs -L 1 -P 0 docker logs --since 30s -f
 ```
+
