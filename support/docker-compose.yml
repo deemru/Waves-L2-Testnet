@@ -5,7 +5,6 @@ services:
     pull_policy: always
     command:
       - --logging=ALL
-      - --bootnodes=enode://663ce222c6ca01f14303c290966a21d387cc1fa77e3eec3c6b6c394740f4c56429fd5645b0fb25c75dc4260b0bca3167943566a261b05adcbdaf82012daa56d1@49.13.137.162:30303,enode://f632e549c9c44980f43f99a9218dda01cd6771379c154dec9dc84e9d039c9124294fab63ab45a2232ba23b1bbbb56a9ea913d98a212579ff114e80f36ab7e8f5@95.31.7.226:30303,enode://48364dd43309b862aae98e0ceac0da35b92cd8c04f082054dce68be1736d99bd72adc4489ae2b231d9e64243ad353d4ec3c7820e3037ba7f4436ae428d3810d4@217.76.63.73:30303
       - --rpc-http-enabled
       - --rpc-http-api=ETH,NET,WEB3,TXPOOL,TRACE,DEBUG,ADMIN
       - --rpc-http-host=127.0.0.1
