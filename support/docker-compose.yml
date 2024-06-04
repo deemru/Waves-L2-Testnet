@@ -30,7 +30,7 @@ services:
 
   waves-node:
     container_name: waves-node
-    image: wavesplatform/wavesnode:L2-20240507-819059ce4c
+    image: wavesplatform/wavesnode:L2-latest
     environment:
       - JAVA_OPTS=-Dwaves.config.directory=/etc/waves -Dlogback.file.level=TRACE
     volumes:
