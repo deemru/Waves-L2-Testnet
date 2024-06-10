@@ -9,4 +9,5 @@ chmod a+w ./log/waves/waves.log
 chown -R 1000:1000 ./besu
 chown -R 1000:1000 ./waves
 chown -R 1000:1000 ./log
+docker compose pull
 docker compose up
