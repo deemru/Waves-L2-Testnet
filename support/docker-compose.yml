@@ -22,10 +22,11 @@ services:
     environment:
       - LOG4J_CONFIGURATION_FILE=/etc/besu/log4j2.xml
     healthcheck:
-      test: ["CMD-SHELL", "echo", "GET / HTTP/1.0\r\n", ">", "/dev/tcp/127.0.0.1/8545"]
-      interval: 10s
-      timeout: 1s
-      retries: 5
+      test: timeout 5s bash -c ':> /dev/tcp/127.0.0.1/8551' || exit 1
+      start_period: 5s
+      interval: 5s
+      timeout: 5s
+      retries: 20
     restart: unless-stopped
     network_mode: host
 
