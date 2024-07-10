@@ -5,7 +5,6 @@ services:
     pull_policy: always
     command:
       - --logging=ALL
-      - --sync-mode=SNAP
       - --rpc-http-enabled
       - --rpc-http-api=ETH,NET,WEB3,TXPOOL,TRACE,DEBUG,ADMIN
       - --rpc-http-host=127.0.0.1
