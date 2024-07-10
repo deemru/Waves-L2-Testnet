@@ -4,7 +4,7 @@ services:
     image: hyperledger/besu:latest
     pull_policy: always
     command:
-      - --logging=ALL
+      - --logging=INFO
       - --rpc-http-enabled
       - --rpc-http-api=ETH,NET,WEB3,TXPOOL,TRACE,DEBUG,ADMIN
       - --rpc-http-host=127.0.0.1
@@ -33,7 +33,7 @@ services:
     container_name: waves-node
     image: wavesplatform/wavesnode:L2-latest
     environment:
-      - JAVA_OPTS=-Dwaves.config.directory=/etc/waves -Dlogback.file.level=TRACE
+      - JAVA_OPTS=-Dwaves.config.directory=/etc/waves -Dlogback.file.level=INFO
     volumes:
       - ./waves:/var/lib/waves
       - ./log/waves:/var/log/waves
