@@ -1,14 +1,14 @@
 #!/bin/sh
 
-REPO_DIR=$(dirname $0)
-cd $REPO_DIR
+REPO_DIR=$(dirname "$0")
+cd "$REPO_DIR" || { echo "Error: cd $REPO_DIR"; exit 1; }
 [ -f ./config.sh ] || { echo "export WAVES_DEPLOYER_SEED=" > ./config.sh; echo "export WAVES_DEPLOYER_PASSWORD=" >> ./config.sh; }
 . ./config.sh
 [ -z "$WAVES_DEPLOYER_SEED" ] || [ -z "$WAVES_DEPLOYER_PASSWORD" ] && { echo "Error: WAVES_DEPLOYER_SEED or WAVES_DEPLOYER_PASSWORD is not set or is null."; exit 1; }
 
 WORK_DIR=work
 mkdir -p $WORK_DIR
-cd $WORK_DIR
+cd $WORK_DIR || { echo "Error: cd $WORK_DIR"; exit 1; }
 
 mkdir -p ./waves/data
 mkdir -p ./besu
