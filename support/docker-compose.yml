@@ -2,7 +2,6 @@ services:
   besu:
     container_name: besu
     image: hyperledger/besu:latest
-    pull_policy: always
     command:
       - --logging=INFO
       - --rpc-http-enabled
