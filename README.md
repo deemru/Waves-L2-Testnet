@@ -45,7 +45,7 @@ nano config.sh
 This setup opens while running public ports:
 - 30303 tcp + udp (besu [P2P](https://besu.hyperledger.org/public-networks/how-to/connect/configure-ports#p2p-networking))
 - 6865 tcp (waves-node L2 P2P)
-- 6868 tcp (waves-node P2P)
+- 6863 tcp (waves-node P2P)
 - 6869 tcp (waves-node REST API)
 
 And localhost (127.0.0.1) accessible ports:
