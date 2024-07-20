@@ -5,6 +5,7 @@ services:
     command:
       - --logging=INFO
       - --rpc-http-enabled
+      - --rpc-http-api-methods-no-auth=eth_blockNumber,eth_getBalance,eth_getTransactionCount,eth_sendRawTransaction,eth_gasPrice,eth_getTransactionByHash,eth_getTransactionReceipt
       - --rpc-http-api=ETH
       - --rpc-http-host=127.0.0.1
       - --engine-rpc-enabled
