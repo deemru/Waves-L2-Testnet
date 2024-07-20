@@ -23,6 +23,7 @@ cp ../support/genesis.json ./genesis.json;
 cp ../support/log4j.xml ./log4j.xml;
 cp ../support/waves.conf ./waves.conf;
 cp ../support/static-nodes.json ./besu/static-nodes.json;
+cp ../support/auth.toml ./besu/auth.toml;
 
 sed -i "s/\(waves.wallet.password = \).*/\1\"$WAVES_DEPLOYER_PASSWORD\"/g" ./waves.conf
 sed -i "s/\(waves.wallet.seed = \).*/\1\"$WAVES_DEPLOYER_SEED\"/g" ./waves.conf
