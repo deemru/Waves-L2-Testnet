@@ -8,7 +8,7 @@ services:
       - --host-allowlist=*
       - --rpc-http-authentication-enabled
       - --rpc-http-authentication-credentials-file=/var/lib/besu/auth.toml
-      - --rpc-http-api-methods-no-auth=eth_blockNumber,eth_getBalance,eth_getTransactionCount,eth_sendRawTransaction,eth_gasPrice,eth_getTransactionByHash,eth_getTransactionReceipt
+      - --rpc-http-api-methods-no-auth=eth_blockNumber,eth_getBalance,eth_getTransactionCount,eth_sendRawTransaction,eth_gasPrice,eth_getTransactionByHash,eth_getTransactionReceipt,eth_getBlockByHash,eth_getBlockByNumber,eth_syncing
       - --rpc-http-api=ETH
       - --rpc-http-host=127.0.0.1
       - --engine-rpc-enabled
