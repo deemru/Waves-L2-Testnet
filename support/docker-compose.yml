@@ -5,7 +5,7 @@ services:
     command:
       - --logging=INFO
       - --rpc-http-enabled
-      - --rpc-http-api=ETH,NET,WEB3,TXPOOL,TRACE,DEBUG,ADMIN
+      - --rpc-http-api=ETH
       - --rpc-http-host=127.0.0.1
       - --engine-rpc-enabled
       - --engine-jwt-disabled
