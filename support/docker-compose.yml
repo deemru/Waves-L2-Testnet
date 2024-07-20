@@ -6,6 +6,7 @@ services:
       - --logging=INFO
       - --rpc-http-enabled
       - --host-allowlist=*
+      - --rpc-http-cors-origins=*
       - --rpc-http-api=ETH,NET
       - --rpc-http-host=127.0.0.1
       - --engine-rpc-enabled
