@@ -35,7 +35,7 @@ sed -i "s/\(waves.network.declared-address = \).*/\1\"$WAVES_DEPLOYER_IPV4:6863\
 [ -d ./waves/data/tx-meta ] || { echo "ERROR: Still no blockchain data found."; exit 1; }
 
 # BESU DATA
-[ -f ./besu/database/LOG ] || { echo "WARNING: No blockchain L2 data found."; echo "WARNING: Blockchain L2 data will be downloaded."; echo "Downloading..."; wget -qO- --show-progress https://blockchain.unit0.dev/l2-bc-latest.tar.gz | tar xv -C ./besu; }
+[ -f ./besu/database/LOG ] || { echo "WARNING: No blockchain L2 data found."; echo "WARNING: Blockchain L2 data will be downloaded."; echo "Downloading..."; wget -qO- --show-progress https://blockchain.unit0.dev/l2-bc-latest.tar | tar xv -C ./besu; }
 [ -f ./besu/database/LOG ] || { echo "ERROR: Still no blockchain L2 data found."; exit 1; }
 
 echo "SUCCESS: Setup done.";
