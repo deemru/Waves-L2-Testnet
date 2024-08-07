@@ -18,6 +18,14 @@ mkdir -p ./besu
 mkdir -p ./log/besu
 mkdir -p ./log/waves
 
+# WAVES DATA
+[ -d ./waves/data/tx-meta ] || { echo "WARNING: No blockchain data found."; echo "WARNING: Blockchain data will be downloaded."; echo "Press any key to continue... "; read -s -r -n 1; echo "Downloading..."; wget -qO- --show-progress https://blockchain-testnet.wavesnodes.com/blockchain_last.tar | tar xv -C ./waves/data; }
+[ -d ./waves/data/tx-meta ] || { echo "ERROR: Still no blockchain data found."; exit 1; }
+
+# BESU DATA
+[ -f ./besu/database/LOG ] || { echo "WARNING: No blockchain L2 data found."; echo "WARNING: Blockchain L2 data will be downloaded."; echo "Downloading..."; wget -qO- --show-progress https://blockchain.unit0.dev/l2-bc-latest.tar | tar xv -C ./besu; }
+[ -f ./besu/database/LOG ] || { echo "ERROR: Still no blockchain L2 data found."; exit 1; }
+
 cp ../support/docker-compose.yml ./docker-compose.yml;
 cp ../support/genesis.json ./genesis.json;
 cp ../support/log4j.xml ./log4j.xml;
@@ -29,13 +37,5 @@ sed -i "s/\(waves.wallet.password = \).*/\1\"$WAVES_DEPLOYER_PASSWORD\"/g" ./wav
 sed -i "s/\(waves.wallet.seed = \).*/\1\"$WAVES_DEPLOYER_SEED\"/g" ./waves.conf
 sed -i "s/\(waves.l2.network.declared-address = \).*/\1\"$WAVES_DEPLOYER_IPV4:6865\"/g" ./waves.conf
 sed -i "s/\(waves.network.declared-address = \).*/\1\"$WAVES_DEPLOYER_IPV4:6863\"/g" ./waves.conf
-
-# WAVES DATA
-[ -d ./waves/data/tx-meta ] || { echo "WARNING: No blockchain data found."; echo "WARNING: Blockchain data will be downloaded."; echo "Press any key to continue... "; read -s -r -n 1; echo "Downloading..."; wget -qO- --show-progress https://blockchain-testnet.wavesnodes.com/blockchain_last.tar | tar xv -C ./waves/data; }
-[ -d ./waves/data/tx-meta ] || { echo "ERROR: Still no blockchain data found."; exit 1; }
-
-# BESU DATA
-[ -f ./besu/database/LOG ] || { echo "WARNING: No blockchain L2 data found."; echo "WARNING: Blockchain L2 data will be downloaded."; echo "Downloading..."; wget -qO- --show-progress https://blockchain.unit0.dev/l2-bc-latest.tar | tar xv -C ./besu; }
-[ -f ./besu/database/LOG ] || { echo "ERROR: Still no blockchain L2 data found."; exit 1; }
 
 echo "SUCCESS: Setup done.";
