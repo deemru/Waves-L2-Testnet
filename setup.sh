@@ -35,7 +35,7 @@ mkdir -p ./log/waves
     echo "Downloading...";
     mkdir -p ./temp;
     rm -rf ./temp/*;
-    wget -qO- --show-progress https://blockchain.unit0.dev/l2-bc-latest.tar | tar xv -C ./temp;
+    wget -qO- --show-progress https://blockchain.unit0.dev/l2-besu-latest.tar | tar xv -C ./temp;
     rm -rf ./besu/database;
     mv -f ./temp/database ./besu/;
     mv -f ./temp/DATABASE_METADATA.json ./besu/;
