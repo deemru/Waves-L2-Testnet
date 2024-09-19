@@ -14,6 +14,8 @@ services:
       - --engine-host-allowlist=127.0.0.1
       - --genesis-file=/etc/besu/genesis.json
       - --data-path=/var/lib/besu
+      - --network-id=88817
+      - --target-gas-limit=15000000
     volumes:
       - ./besu:/var/lib/besu
       - ./log/besu:/opt/besu/logs
