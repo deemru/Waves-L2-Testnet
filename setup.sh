@@ -47,6 +47,7 @@ cp ../support/docker-compose.yml ./docker-compose.yml;
 cp ../support/genesis.json ./genesis.json;
 cp ../support/log4j.xml ./log4j.xml;
 cp ../support/waves.conf ./waves.conf;
+cp ../support/waves.sh ./waves.sh;
 cp ../support/static-nodes.json ./besu/static-nodes.json;
 cp ../support/auth.toml ./besu/auth.toml;
 

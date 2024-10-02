@@ -36,11 +36,13 @@ services:
     container_name: waves-node
     image: ghcr.io/unitsnetwork/consensus-client:testnet
     environment:
-      - JAVA_OPTS=-Dwaves.config.directory=/etc/waves -Dlogback.file.level=INFO
+      - JAVA_OPTS=-Dwaves.config.directory=/etc/waves -Dlogback.file.level=INFO --add-opens=java.base/sun.nio.ch=ALL-UNNAMED
     volumes:
       - ./waves:/var/lib/waves
       - ./log/waves:/var/log/waves
       - ./waves.conf:/etc/waves/waves.conf:ro
+      - ./waves.sh:/usr/share/waves/bin/entrypoint.sh:ro
+      - ${HOME}/.sdkman:/root/.sdkman:ro
     depends_on:
       besu:
         condition: service_healthy
