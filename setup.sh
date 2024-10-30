@@ -53,7 +53,7 @@ cp ../support/auth.toml ./besu/auth.toml;
 
 sed -i "s/\(waves.wallet.password = \).*/\1\"$WAVES_DEPLOYER_PASSWORD\"/g" ./waves.conf
 sed -i "s/\(waves.wallet.seed = \).*/\1\"$WAVES_DEPLOYER_SEED\"/g" ./waves.conf
-sed -i "s/\(waves.l2.network.declared-address = \).*/\1\"$WAVES_DEPLOYER_IPV4:6865\"/g" ./waves.conf
+sed -i "s/\(          declared-address = \).*/\1\"$WAVES_DEPLOYER_IPV4:6865\"/g" ./waves.conf
 sed -i "s/\(waves.network.declared-address = \).*/\1\"$WAVES_DEPLOYER_IPV4:6863\"/g" ./waves.conf
 
 echo "SUCCESS: Setup done.";
